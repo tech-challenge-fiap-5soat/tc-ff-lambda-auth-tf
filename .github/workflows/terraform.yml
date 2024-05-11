@@ -23,11 +23,11 @@ jobs:
       - name: Generate terraform.tfvars.json
         run: |
           echo '{
-            "CLIENT_ID": "${{ env.CLIENT_ID }}",
+            "CLIENT_ID": "${{ secrets.CLIENT_ID }}",
             "DB_URL": "${{ secrets.DB_URL }}",
-            "PERM_PASS": "${{ env.PERM_PASS }}",
-            "USER_POOL_ID": "${{ env.USER_POOL_ID }}",
-            "REGION": "${{ env.REGION }}",
+            "PERM_PASS": "${{ secrets.PERM_PASS }}",
+            "USER_POOL_ID": "${{ secrets.USER_POOL_ID }}",
+            "REGION": "${{ secrets.REGION }}",
             "AWS_ACCESS_KEY": "${{ secrets.AWS_ACCESS_KEY }}",
             "AWS_SECRET_KEY": "${{ secrets.AWS_SECRET_KEY }}"
           }' > terraform.tfvars.json
