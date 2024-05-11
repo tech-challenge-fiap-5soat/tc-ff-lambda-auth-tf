@@ -1,0 +1,45 @@
+name: 'Deploy lambda and api gateway to auth user'
+
+on:
+  pull_request:
+    types: [closed]
+    branches:
+      - main
+
+jobs:
+  build:
+    if: ${{ github.event.pull_request.merged }}
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+      
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v2
+        with:
+          terraform_version: 1.8.3
+      
+      - name: Generate terraform.tfvars.json
+        run: |
+          echo '{
+            "CLIENT_ID": "${{ env.CLIENT_ID }}",
+            "DB_URL": "${{ secrets.DB_URL }}",
+            "PERM_PASS": "${{ env.PERM_PASS }}",
+            "USER_POOL_ID": "${{ env.USER_POOL_ID }}",
+            "REGION": "${{ env.REGION }}",
+            "AWS_ACCESS_KEY": "${{ secrets.AWS_ACCESS_KEY }}",
+            "AWS_SECRET_KEY": "${{ secrets.AWS_SECRET_KEY }}"
+          }' > terraform.tfvars.json
+
+      - name: Terraform Init
+        run: terraform init
+
+      - name: Terraform Plan
+        id: plan
+        run: terraform plan -var-file=terraform.tfvars.json -no-color
+      
+      - name: Terraform Apply
+        run: terraform apply -auto-approve -var-file=terraform.tfvars.json
+
+
