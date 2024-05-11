@@ -18,7 +18,7 @@ resource "aws_lambda_function" "food_auth_api" {
     variables = { 
       DB_URL = var.DB_URL
       PERM_PASS = var.PERM_PASS
-      REGION = var.REGION
+      REGION = var.aws_region
       USER_POOL_ID = var.USER_POOL_ID
       CLIENT_ID = var.CLIENT_ID
     }
