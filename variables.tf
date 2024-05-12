@@ -3,6 +3,11 @@ variable "aws_region" {
   default = "us-east-1"
 }
 
+variable "labRole" {
+  type = string
+  default = "arn:aws:iam::833529686865:role/LabRole"
+}
+
 variable "CLIENT_ID" {
   type    = string
 }
@@ -29,4 +34,8 @@ variable "AWS_ACCESS_KEY" {
 
 variable "AWS_SECRET_KEY" {
   type    = string
+}
+
+variable "AWS_SESSION_TOKEN_RP" {
+  type = string
 }
