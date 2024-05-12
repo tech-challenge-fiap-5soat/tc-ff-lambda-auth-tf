@@ -7,8 +7,8 @@ data "archive_file" "food_auth_api_artefact" {
 resource "aws_lambda_function" "food_auth_api" {
   function_name = "food_auth_api"
   handler       = "index.handler"
-  description   = "Gets an authorization token"
-  role          = aws_iam_role.food_auth_api_lambda.arn
+  description   = "Gets an authorization token" 
+  role          = var.labRole
   runtime       = "nodejs18.x"
 
   filename         = data.archive_file.food_auth_api_artefact.output_path
