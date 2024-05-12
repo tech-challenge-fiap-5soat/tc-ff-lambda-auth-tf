@@ -10,30 +10,37 @@ variable "labRole" {
 
 variable "CLIENT_ID" {
   type    = string
+  default = ""
 }
 
 variable "DB_URL" {
   type    = string
+  default = ""
 }
 
 variable "PERM_PASS" {
   type    = string
+  default = ""
 }
 
 variable "REGION" {
   type    = string
+  default = ""
 }
 
 variable "USER_POOL_ID" {
   type    = string
+  default = ""
 }
 
 variable "AWS_ACCESS_KEY" {
   type    = string
+  default = ""
 }
 
 variable "AWS_SECRET_KEY" {
   type    = string
+  default = ""
 }
 
 variable "AWS_SESSION_TOKEN" {
