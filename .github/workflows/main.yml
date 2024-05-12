@@ -11,10 +11,14 @@ jobs:
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_KEY }}
-          aws-region: ${{ secrets.AWS_REGION }}
-          aws-session-token: ${{ secrets.AWS_SESSION_TOKEN_RP }}
+          CLIENT_ID: ${{ secrets.CLIENT_ID }}
+          DB_URL: ${{ secrets.DB_URL }}
+          PERM_PASS: ${{ secrets.PERM_PASS }}
+          USER_POOL_ID: ${{ secrets.USER_POOL_ID }}
+          REGION: ${{ secrets.REGION }}
+          AWS_ACCESS_KEY: ${{ secrets.AWS_ACCESS_KEY }}
+          AWS_SECRET_KEY: ${{ secrets.AWS_SECRET_KEY }}
+          AWS_SESSION_TOKEN: ${{ secrets.AWS_SESSION_TOKEN_RP }}
 
       - name: Checkout Repository
         uses: actions/checkout@v3
