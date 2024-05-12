@@ -23,6 +23,7 @@ const REGION = process.env.REGION;
 const USER_POOL_ID = process.env.USER_POOL_ID;
 const CLIENT_ID = process.env.CLIENT_ID;
 const permPass = process.env.PERM_PASS;
+const GUEST_USER = { email: 'guest@guest.com', cpf: '99999999999', name: 'guest user' }
 
 const cognitoClient = new CognitoIdentityProviderClient({ region: REGION });
 
@@ -104,7 +105,10 @@ export const handler = async (event) => {
   const { cpf } = event.queryParams
 
   try {
-    const customer = await getUser(cpf)
+    var customer = await getUser(cpf)
+    if(!customer) {
+      customer = GUEST_USER
+    }
 
     console.info("Searching User on Cognito.")
     const userCogResult = await getCognitoUser(customer.email)
