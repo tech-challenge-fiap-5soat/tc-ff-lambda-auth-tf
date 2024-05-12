@@ -45,4 +45,5 @@ variable "AWS_SECRET_KEY" {
 
 variable "AWS_SESSION_TOKEN" {
   type = string
+  default = ""
 }
