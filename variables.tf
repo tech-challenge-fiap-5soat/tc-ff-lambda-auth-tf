@@ -5,7 +5,7 @@ variable "aws_region" {
 
 variable "labRole" {
   type = string
-  default = ""
+  default = "arn:aws:iam::422873608863:role/LabRole"
 }
 
 variable "CLIENT_ID" {
