@@ -30,7 +30,8 @@ jobs:
             "REGION": "${{ secrets.AWS_REGION }}",
             "AWS_ACCESS_KEY": "${{ secrets.AWS_ACCESS_KEY_ID }}",
             "AWS_SECRET_KEY": "${{ secrets.AWS_SECRET_ACCESS_KEY }}",
-            "AWS_SESSION_TOKEN": "${{ secrets.AWS_SESSION_TOKEN }}"
+            "AWS_SESSION_TOKEN": "${{ secrets.AWS_SESSION_TOKEN }}",
+            "AWS_ROLE": "${{ secrets.AWS_ROLE }}"
           }' > terraform.tfvars.json
 
       - name: Terraform Init
